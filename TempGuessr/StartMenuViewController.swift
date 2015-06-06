@@ -23,13 +23,6 @@ class StartMenuViewController: UIViewController, PFLogInViewControllerDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //check for updates to parse game object
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadData", name: "reloadTimeLine", object: nil)
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
         if PFUser.currentUser() == nil {
             var loginVC = PFLogInViewController()
             loginVC.fields = PFLogInFields.UsernameAndPassword | PFLogInFields.LogInButton | PFLogInFields.SignUpButton
@@ -40,7 +33,30 @@ class StartMenuViewController: UIViewController, PFLogInViewControllerDelegate, 
             loginVC.signUpController = signupVC
             
             self.presentViewController(loginVC, animated: true, completion: nil)
+        } else {
+            self.playerID = PFUser.currentUser()?.username
+            self.playerIDLabel.text = playerID!
         }
+
+        
+        //check for updates to parse game object
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadData", name: "reloadTimeLine", object: nil)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+//        if PFUser.currentUser() == nil {
+//            var loginVC = PFLogInViewController()
+//            loginVC.fields = PFLogInFields.UsernameAndPassword | PFLogInFields.LogInButton | PFLogInFields.SignUpButton
+//            loginVC.delegate = self
+//            
+//            var signupVC = PFSignUpViewController()
+//            signupVC.delegate = self
+//            loginVC.signUpController = signupVC
+//            
+//            self.presentViewController(loginVC, animated: true, completion: nil)
+//        }
     }
     
     override func didReceiveMemoryWarning() {
