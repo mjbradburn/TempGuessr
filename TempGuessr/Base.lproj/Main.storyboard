@@ -1,25 +1,98 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wwA-n4-tc2">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="ufC-wZ-h7g">
+        <!--StartMenuViewController-->
+        <scene sceneID="gaZ-I4-woj">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="StartMenuViewController" id="wwA-n4-tc2" customClass="StartMenuViewController" customModule="TempGuessr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                        <viewControllerLayoutGuide type="top" id="HxY-Rg-3Az"/>
+                        <viewControllerLayoutGuide type="bottom" id="Qjh-MJ-p1x"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                    <view key="view" contentMode="scaleToFill" id="z0I-8x-ad0">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8EV-9X-pYI">
+                                <rect key="frame" x="255" y="184" width="90" height="30"/>
+                                <state key="normal" title="Play a Friend">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R0G-Ri-aV7">
+                                <rect key="frame" x="268" y="222" width="65" height="30"/>
+                                <state key="normal" title="Play Solo">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A really really long user name goes here" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d56-ZP-ncu">
+                                <rect key="frame" x="211" y="20" width="179" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="179" id="wwZ-Wy-JMh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KOh-Jt-tjF">
+                                <rect key="frame" x="16" y="16" width="51" height="30"/>
+                                <state key="normal" title="LogOut">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logOut:" destination="wwA-n4-tc2" eventType="touchUpInside" id="KbI-Jj-Yfb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s5W-WL-rTy">
+                                <rect key="frame" x="554" y="16" width="30" height="30"/>
+                                <state key="normal" title="Quit">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="quitGame:" destination="wwA-n4-tc2" eventType="touchUpInside" id="xwY-Mh-ZXV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rea-BS-cr6">
+                                <rect key="frame" x="257" y="146" width="87" height="30"/>
+                                <state key="normal" title="Join a Game">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="requestMatch:" destination="wwA-n4-tc2" eventType="touchUpInside" id="JTu-Sb-xYZ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="d56-ZP-ncu" firstAttribute="top" secondItem="HxY-Rg-3Az" secondAttribute="bottom" id="7zA-Tq-Kbx"/>
+                            <constraint firstItem="d56-ZP-ncu" firstAttribute="baseline" secondItem="KOh-Jt-tjF" secondAttribute="firstBaseline" id="8t6-8J-da8"/>
+                            <constraint firstItem="R0G-Ri-aV7" firstAttribute="top" secondItem="8EV-9X-pYI" secondAttribute="bottom" constant="8" symbolic="YES" id="BHe-rc-98L"/>
+                            <constraint firstItem="KOh-Jt-tjF" firstAttribute="top" secondItem="z0I-8x-ad0" secondAttribute="topMargin" constant="16" id="BcV-0K-hYI"/>
+                            <constraint firstItem="Qjh-MJ-p1x" firstAttribute="top" secondItem="R0G-Ri-aV7" secondAttribute="bottom" constant="348" id="CWb-Kc-2gJ"/>
+                            <constraint firstItem="R0G-Ri-aV7" firstAttribute="centerX" secondItem="z0I-8x-ad0" secondAttribute="centerX" id="ESc-b8-Zzm"/>
+                            <constraint firstItem="R0G-Ri-aV7" firstAttribute="centerX" secondItem="8EV-9X-pYI" secondAttribute="centerX" id="MAA-rF-T9A"/>
+                            <constraint firstItem="8EV-9X-pYI" firstAttribute="top" secondItem="rea-BS-cr6" secondAttribute="bottom" constant="8" symbolic="YES" id="Swq-nn-wGt"/>
+                            <constraint firstItem="KOh-Jt-tjF" firstAttribute="leading" secondItem="z0I-8x-ad0" secondAttribute="leadingMargin" id="XsG-0Q-tPc"/>
+                            <constraint firstItem="s5W-WL-rTy" firstAttribute="trailing" secondItem="z0I-8x-ad0" secondAttribute="trailingMargin" id="b2x-34-FeW"/>
+                            <constraint firstItem="rea-BS-cr6" firstAttribute="centerX" secondItem="8EV-9X-pYI" secondAttribute="centerX" id="qna-Rt-kOl"/>
+                            <constraint firstItem="d56-ZP-ncu" firstAttribute="baseline" secondItem="s5W-WL-rTy" secondAttribute="baseline" id="vgq-Lc-kqZ"/>
+                            <constraint firstItem="d56-ZP-ncu" firstAttribute="centerX" secondItem="rea-BS-cr6" secondAttribute="centerX" id="wbx-WA-efR"/>
+                            <constraint firstItem="d56-ZP-ncu" firstAttribute="baseline" secondItem="KOh-Jt-tjF" secondAttribute="baseline" id="yQM-Ib-zqF"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="playerIDLabel" destination="d56-ZP-ncu" id="iFe-3S-7Tk"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ntu-AL-flZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1162" y="245"/>
         </scene>
     </scenes>
 </document>
