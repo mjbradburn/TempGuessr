@@ -37,24 +37,7 @@ class ScoreViewController: UIViewController {
 
         var city : String = CityList.city[index]
         cityLabel.text = city
-        
-        //get second player's guesses
-        var query = PFQuery(className: "Game")
-        query.getObjectInBackgroundWithId(gameObjectID!) {(game: PFObject?, error: NSError?) -> Void in
 
-            self.firstPlayerIDLabel.text = (game!.objectForKey("firstPlayer") as? String)
-            self.firstPlayerGuessesArray = game!.objectForKey("firstPlayerGuessesArray") as! [Int]
-            self.firstPlayerGuessLabel.text = String(self.firstPlayerGuessesArray[self.index])
-            self.firstPlayerScore = (game!.objectForKey("firstPlayerScore") as? Int)
-            
-            self.secondPlayerIDLabel.text = (game!.objectForKey("secondPlayer") as? String)
-            self.secondPlayerGuessesArray = game!.objectForKey("secondPlayerGuessesArray") as! [Int]
-            self.secondPlayerGuessLabel.text = String(self.secondPlayerGuessesArray[self.index])
-            self.secondPlayerScore = (game!.objectForKey("secondPlayerScore") as? Int)
-        }
-        
-        
-        
         //get current temps from wunderground
         for city in CityList.city {
             
@@ -83,6 +66,21 @@ class ScoreViewController: UIViewController {
                 }
             }
             task.resume()
+        }
+        
+        //get player's guesses
+        var query = PFQuery(className: "Game")
+        query.getObjectInBackgroundWithId(gameObjectID!) {(game: PFObject?, error: NSError?) -> Void in
+            
+            self.firstPlayerIDLabel.text = (game!.objectForKey("firstPlayer") as? String)
+            self.firstPlayerGuessesArray = game!.objectForKey("firstPlayerGuessesArray") as! [Int]
+            self.firstPlayerGuessLabel.text = String(self.firstPlayerGuessesArray[self.index])
+            self.firstPlayerScore = (game!.objectForKey("firstPlayerScore") as? Int)
+            
+            self.secondPlayerIDLabel.text = (game!.objectForKey("secondPlayer") as? String)
+            self.secondPlayerGuessesArray = game!.objectForKey("secondPlayerGuessesArray") as! [Int]
+            self.secondPlayerGuessLabel.text = String(self.secondPlayerGuessesArray[self.index])
+            self.secondPlayerScore = (game!.objectForKey("secondPlayerScore") as? Int)
         }
         
         
