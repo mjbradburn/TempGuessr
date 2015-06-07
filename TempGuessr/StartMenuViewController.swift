@@ -160,7 +160,7 @@ class StartMenuViewController: UIViewController, PFLogInViewControllerDelegate, 
                         var channel : String = "\(self.playerID!)\(self.gameObjectID!)"
                         println("channel is: \(channel)")
                         PFPush.subscribeToChannelInBackground(channel)
-                        var alert = UIAlertView(title: "'", message: "Finding a match...we'll notify you", delegate: self, cancelButtonTitle: "OK")
+                        var alert = UIAlertView(title: "TempGuessr", message: "Finding a match...we'll notify you", delegate: self, cancelButtonTitle: "OK")
                         alert.show()
                         self.gameIsReady = false
                         //self.playerType = "first"

@@ -67,7 +67,6 @@ class ScoreViewController: UIViewController {
             }
             task.resume()
         }
-        
         //get player's guesses
         var query = PFQuery(className: "Game")
         query.getObjectInBackgroundWithId(gameObjectID!) {(game: PFObject?, error: NSError?) -> Void in
@@ -82,6 +81,7 @@ class ScoreViewController: UIViewController {
             self.secondPlayerGuessLabel.text = String(self.secondPlayerGuessesArray[self.index])
             self.secondPlayerScore = (game!.objectForKey("secondPlayerScore") as? Int)
         }
+
         
         
     }
