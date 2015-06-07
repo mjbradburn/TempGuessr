@@ -80,18 +80,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        PFPush.handlePush(userInfo)
         var notification : NSDictionary
         var user = userInfo as NSDictionary
         notification = user.objectForKey("aps") as! NSDictionary
-        
+
         if (notification.objectForKey("content-available") != nil) {
-            if notification.objectForKey("content-available")!.isEqual(1){
-                NSNotificationCenter.defaultCenter().postNotificationName("reloadTimeLine", object: nil)
+            if (notification.objectForKey("content-available")!.isEqualToNumber(1)){
+                NSNotificationCenter.defaultCenter().postNotificationName("startGame", object: nil)
+                //PFPush.handlePush(userInfo)
             }
-        } else {
-            PFPush.handlePush(userInfo)
         }
-        
+
+
         if application.applicationState == UIApplicationState.Inactive {
             PFAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
         }
@@ -105,6 +106,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         println(error.localizedDescription)
     }
     
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        println("did recieve local notification \(notification)")
+    }
 
     
     
