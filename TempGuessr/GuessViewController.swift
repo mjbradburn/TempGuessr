@@ -76,7 +76,7 @@ class GuessViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         nextScene.gameObjectID = self.gameObjectID
         nextScene.playerID = self.playerID
         
-        //Send guesses to Parse
+        //Send guesses to Parse and Get 
         var game = PFQuery(className: "Game")
         game.getObjectInBackgroundWithId(self.gameObjectID!) {(game: PFObject?, error: NSError?) -> Void in
             //if self.playerID! == game?.objectForKey("firstPlayer") as! String {
