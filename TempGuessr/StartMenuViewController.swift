@@ -111,6 +111,7 @@ class StartMenuViewController: UIViewController, PFLogInViewControllerDelegate, 
             loginVC.fields = PFLogInFields.UsernameAndPassword | PFLogInFields.LogInButton | PFLogInFields.SignUpButton | PFLogInFields.PasswordForgotten | PFLogInFields.Facebook | PFLogInFields.Twitter
             loginVC.delegate = self
             
+            
             loginVC.facebookPermissions = ["basic_info"]
             
             var signupVC = PFSignUpViewController()
