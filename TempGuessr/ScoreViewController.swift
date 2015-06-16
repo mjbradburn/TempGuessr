@@ -27,21 +27,18 @@ class ScoreViewController: UIViewController {
     var secondPlayerGuessesArray = [Int]()
     var firstPlayerScore : Int?
     var secondPlayerScore : Int?
-    
+    var randomCities = [String]()
     var index = 0
     var currentTemp : Int?
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        var city : String = CityList.city[index]
+        var city = randomCities[index]
         cityLabel.text = city
 
         //get current temps from wunderground
-        for city in CityList.city {
-            
-            
+        for city in randomCities {
             let dirtyUrl : String = "http://api.wunderground.com/api/367213135b73458e/conditions/q/\(city).json"
             let cleanUrl = dirtyUrl.stringByReplacingOccurrencesOfString(" ", withString: "%20", options: NSStringCompareOptions.LiteralSearch, range: nil)
             
@@ -60,7 +57,6 @@ class ScoreViewController: UIViewController {
                         println(self.currentTemp)
                     }
                     dispatch_async(dispatch_get_main_queue()) {
-                        //self.currentTempLabel.text = toString(self.currentTemp!)
                         self.currentTempArray.append(self.currentTemp!)
                     }
                 }
@@ -81,6 +77,7 @@ class ScoreViewController: UIViewController {
             self.secondPlayerGuessLabel.text = String(self.secondPlayerGuessesArray[self.index])
             self.secondPlayerScore = (game!.objectForKey("secondPlayerScore") as? Int)
         }
+
 
         
         
@@ -119,8 +116,8 @@ class ScoreViewController: UIViewController {
             game?.setValue(self.firstPlayerScore!, forKey: "firstPlayerScore")
             game?.setObject(self.secondPlayerScore!, forKey: "secondPlayerScore")
         }
-        if index < CityList.city.count {
-            var city : String = CityList.city[index]
+        if index < randomCities.count {
+            var city = randomCities[index]
             cityLabel.text = city
             self.currentTempLabel.text = toString(self.currentTempArray[index])
             

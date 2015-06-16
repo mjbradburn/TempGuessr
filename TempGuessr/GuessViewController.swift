@@ -21,17 +21,45 @@ class GuessViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     var selectedTemp : Int?
     let pickerTempArray = [Int](-50...100)
     var index = 0
+    var gameIsReady = false
+    var otherPlayerFinishedStatus = false
+    var playerType : String?
+    var randomCities : [String]?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var city = CityList.city[index]
+        //get city array from Parse
+//        var game = PFQuery(className: "Game")
+//        game.getObjectInBackgroundWithId(self.gameObjectID!) {(game: PFObject?, error: NSError?) -> Void in
+//            self.randomCities = game?.objectForKey("citiesArray") as! Array
+//            for city in self.randomCities {
+//                println(city)
+//            }
+//        }
+        
+
+        
+        var city = randomCities?[index]
         cityLabel.text = city
         
         tempPicker.selectRow(100, inComponent: 0, animated: true)
         selectedTemp = tempPicker.selectedRowInComponent(0)
         
         self.nextButton.enabled  = false
+        
+        //set channel to be notified when other player is finished
+        var channel : String?
+        if playerType == "first" {
+            channel = "firstPlayer\(self.gameObjectID!)"
+        } else {
+            channel = "secondPlayer\(self.gameObjectID!)"
+        }
+        PFPush.subscribeToChannelInBackground(channel)
+        
+        //add a listener for notification to advance to scoreVC
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateOtherPlayerFinishedStatus", name: "startGame", object: nil)
 
     }
 
@@ -67,6 +95,16 @@ class GuessViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
             self.nextButton.enabled = false
         }
     }
+    
+    func updateOtherPlayerFinishedStatus(){
+        otherPlayerFinishedStatus = true
+        
+        //if user was already waiting force next scene
+        if guessesArray.count == randomCities!.count {
+            performSegueWithIdentifier("showScoreViewController", sender: self)
+            MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
+        }
+    }
 
 
     // MARK: - Navigation
@@ -75,25 +113,27 @@ class GuessViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         var nextScene : ScoreViewController = segue.destinationViewController as! ScoreViewController
         nextScene.gameObjectID = self.gameObjectID
         nextScene.playerID = self.playerID
+        nextScene.randomCities = self.randomCities!
         
         //Send guesses to Parse and Get 
-        var game = PFQuery(className: "Game")
-        game.getObjectInBackgroundWithId(self.gameObjectID!) {(game: PFObject?, error: NSError?) -> Void in
-            //if self.playerID! == game?.objectForKey("firstPlayer") as! String {
-                game!.setValue(self.guessesArray, forKey: "firstPlayerGuessesArray")
-            //} else {
-                game!.setValue(self.guessesArray, forKey: "secondPlayerGuessesArray")
-            //}
-            game!.saveInBackground()
-            println("scores added \(error)")
-        }
+//        var game = PFQuery(className: "Game")
+//        game.getObjectInBackgroundWithId(self.gameObjectID!) {(game: PFObject?, error: NSError?) -> Void in
+//            if self.playerID! == game?.objectForKey("firstPlayer") as! String {
+//                game!.setValue(self.guessesArray, forKey: "firstPlayerGuessesArray")
+//            } else {
+//                game!.setValue(self.guessesArray, forKey: "secondPlayerGuessesArray")
+//            }
+//            game!.saveInBackground()
+//            println("scores added \(error)")
+//        }
     }
     
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
-        if (guessesArray.count == CityList.city.count){
+        if (guessesArray.count == randomCities!.count && otherPlayerFinishedStatus ){
             return true
+        } else {
+            return false
         }
-        return false
     }
 
     
@@ -103,17 +143,94 @@ class GuessViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         
         if selectedTemp == nil {
             self.nextButton.enabled = false
-        } else {
-            if guessesArray.count < CityList.city.count {
-                index++
-                var city = CityList.city[index]
-                cityLabel.text = city
-                
-                tempPicker.selectRow(100, inComponent: 0, animated: true)
-                selectedTemp = tempPicker.selectedRowInComponent(0)
-                self.nextButton.enabled = false
+        } else if guessesArray.count < randomCities!.count {
+            index++
+            var city = randomCities?[index]
+            cityLabel.text = city
+            
+            tempPicker.selectRow(100, inComponent: 0, animated: true)
+            
+            var game = PFQuery(className: "Game")
+            game.getObjectInBackgroundWithId(self.gameObjectID!) {(game: PFObject?, error: NSError?) -> Void in
+                if self.playerID! == game?.objectForKey("firstPlayer") as! String {
+                    game!.setValue(self.guessesArray, forKey: "firstPlayerGuessesArray")
+                } else {
+                    game!.setValue(self.guessesArray, forKey: "secondPlayerGuessesArray")
+                }
+                game!.saveInBackground()
+                println("scores added \(error)")
             }
+            
+            selectedTemp = tempPicker.selectedRowInComponent(0)
+            self.nextButton.enabled = false
+        } else if guessesArray.count == randomCities!.count && !otherPlayerFinishedStatus {
+            
+            var game = PFQuery(className: "Game")
+            game.getObjectInBackgroundWithId(self.gameObjectID!) {(game: PFObject?, error: NSError?) -> Void in
+                if self.playerID! == game?.objectForKey("firstPlayer") as! String {
+                    game!.setValue(self.guessesArray, forKey: "firstPlayerGuessesArray")
+                } else {
+                    game!.setValue(self.guessesArray, forKey: "secondPlayerGuessesArray")
+                }
+                game!.saveInBackground()
+                println("scores added \(error)")
+            }
+            
+            //send notification to other player that you are ready
+            if playerType == "first" {
+                var push : PFPush = PFPush()
+                var data : NSDictionary = ["alert":"Scores Ready", "badge":"0", "content-available":"1", "sound":""]
+                push.setChannel("secondPlayer\(self.gameObjectID!)")
+                push.setData(data as [NSObject : AnyObject])
+                push.sendPushInBackground()
+            } else if playerType == "second" {
+                var push : PFPush = PFPush()
+                var data : NSDictionary = ["alert":"Scores Ready", "badge":"0", "content-available":"1", "sound":""]
+                push.setChannel("firstPlayer\(self.gameObjectID!)")
+                push.setData(data as [NSObject : AnyObject])
+                push.sendPushInBackground()
+            }
+            
+            //show waiting animation until other player notifies they are finished
+            if !otherPlayerFinishedStatus {
+                    let progressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                    progressHUD.labelText = "Waiting for other player"
+                    progressHUD.mode = MBProgressHUDMode.Indeterminate
+            }
+        } else if guessesArray.count == randomCities!.count && otherPlayerFinishedStatus {
+            
+            var game = PFQuery(className: "Game")
+            game.getObjectInBackgroundWithId(self.gameObjectID!) {(game: PFObject?, error: NSError?) -> Void in
+                if self.playerID! == game?.objectForKey("firstPlayer") as! String {
+                    game!.setValue(self.guessesArray, forKey: "firstPlayerGuessesArray")
+                } else {
+                    game!.setValue(self.guessesArray, forKey: "secondPlayerGuessesArray")
+                }
+                game!.saveInBackground()
+                println("scores added \(error)")
+            }
+            
+            //send notification to other player that you are ready
+            if playerType == "first" {
+                var push : PFPush = PFPush()
+                var data : NSDictionary = ["alert":"Scores Ready", "badge":"0", "content-available":"1", "sound":""]
+                push.setChannel("secondPlayer\(self.gameObjectID!)")
+                push.setData(data as [NSObject : AnyObject])
+                push.sendPushInBackground()
+            } else if playerType == "second" {
+                var push : PFPush = PFPush()
+                var data : NSDictionary = ["alert":"Scores Ready", "badge":"0", "content-available":"1", "sound":""]
+                push.setChannel("firstPlayer\(self.gameObjectID!)")
+                push.setData(data as [NSObject : AnyObject])
+                push.sendPushInBackground()
+            }
+            
+            
+            performSegueWithIdentifier("showScoreViewController", sender: self)
+            //MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
+            
         }
     }
+
 
 }// last brace

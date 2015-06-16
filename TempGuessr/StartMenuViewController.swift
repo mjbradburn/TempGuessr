@@ -16,11 +16,43 @@ class StartMenuViewController: UIViewController, PFLogInViewControllerDelegate, 
     
     @IBOutlet weak var playerIDLabel: UILabel!
     
+    var cityArray : [String] = [
+        "New York City, New York",
+        "Tokyo, Japan",
+        "Rio De Janeiro, Brazil",
+        "Jakarta, Indonesia",
+        "London, United Kingdom",
+        "Seoul, South Korea",
+        "Dehli, India",
+        "Shanghai, China",
+        "Manila, Philippines",
+        "Karachi, Pakistan",
+        "Mexico City, Mexico",
+        "Cairo, Egypt",
+        "Beijing, China",
+        "Mumbai, India",
+        "Moscow, Russia",
+        "Los Angeles, CA",
+        "Istanbul, Turkey",
+        "Lagos, Nigeria",
+        "Paris, France",
+        "Lima, Peru",
+        "Chicago, IL",
+        "Johannesburg, South Africa",
+        "Tehran, Iran",
+        "Toronto, Canada",
+        "San Fransisco, CA",
+        "Milan, Italy",
+        "Miami, FL",
+        "Detroit, MI"
+    ]
+    
     var playerID : String?
     var gameObjectID : String?
     var gameIsReady : Bool = false
     var playerIsGuest : Bool = false
-    var cites : PFObject?
+    //var cites : PFObject?
+    var randomCities : [String]?
     var playerType : String?
     
     override func viewDidLoad() {
@@ -180,6 +212,12 @@ class StartMenuViewController: UIViewController, PFLogInViewControllerDelegate, 
                 newGame["secondPlayer"] = ""
                 newGame["firstPlayerScore"] = 0
                 newGame["secondPlayerScore"] = 0
+                
+                //add random cities
+                self.cityArray.shuffled()
+                self.randomCities = self.cityArray.choose(2)
+                newGame["citiesArray"] = self.randomCities
+                
                 newGame.saveInBackgroundWithBlock{(success: Bool, error: NSError?) -> Void in
                     if (success){
                         self.gameObjectID =  newGame.objectId
@@ -194,8 +232,7 @@ class StartMenuViewController: UIViewController, PFLogInViewControllerDelegate, 
                         var alert = UIAlertView(title: "TempGuessr", message: "Finding a match...we'll notify you", delegate: self, cancelButtonTitle: "OK")
                         alert.show()
                         self.gameIsReady = false
-                        //self.playerType = "first"
-                        
+                        self.playerType = "first"
                     }
                 }
             } else {
@@ -216,66 +253,14 @@ class StartMenuViewController: UIViewController, PFLogInViewControllerDelegate, 
                     push.setData(data as [NSObject : AnyObject])
                     push.sendPushInBackground()
                     println("send game is on push")
-                    //self.playerType = "second"
+                    self.playerType = "second"
                     //segue to guess scene
                     self.showNextScene()
-                    
-                    
                 }
             }
         }
     }
 
-//            //add a request with 1/2 game to queue
-//            let request = PFObject(className: "Request")
-//            request["hostUsername"] = self.playerID
-//            var newGame = PFObject(className: "Game")
-//            newGame["firstPlayer"] = self.playerID
-//            newGame["secondPlayer"] = ""
-//            newGame["firstPlayerScore"] = 0
-//            newGame["secondPlayerScore"] = 0
-//            newGame.saveInBackgroundWithBlock{(success: Bool, error: NSError?) -> Void in
-//                if (success){
-//                    self.gameObjectID =  newGame.objectId
-//                    request["gameObjectID"] = newGame.objectId
-//                    request.saveInBackground()
-//                    println("game added \(self.gameObjectID)")
-//                    
-//                    //set channel to be notified when game is fulfilled
-//                    var channel : String = "\(self.playerID!)\(self.gameObjectID!)"
-//                    println("channel is: \(channel)")
-//                    PFPush.subscribeToChannelInBackground(channel)
-//                    
-//                    var alert = UIAlertView(title: "'", message: "Finding a match...we'll notify you", delegate: self, cancelButtonTitle: "OK")
-//                    alert.show()
-//                    self.gameIsReady = false
-//                    self.playerType = "first"
-//        } else {
-//            //make a match
-//            self.gameObjectID = object?.objectForKey("gameObjectID") as? String
-//            object?.deleteEventually()
-//            var newGame = PFQuery(className: "Game")
-//            newGame.getObjectInBackgroundWithId(self.gameObjectID!) {(game: PFObject?, error: NSError?) -> Void in
-//                game!.setValue(self.playerID, forKey: "secondPlayer")
-//                game!.saveInBackground()
-//                
-//                //push notification to host
-//                var host = game!.objectForKey("firstPlayer") as? String
-//                var push : PFPush = PFPush()
-//                var data : NSDictionary = ["alert":"Your game is on!", "badge":"0", "content-available":"1", "sound":""]
-//                push.setChannel("\(host!)\(self.gameObjectID!)")
-//                //push.setMessage("Your game is on!")
-//                push.setData(data as [NSObject : AnyObject])
-//                push.sendPushInBackground()
-//                println("send game is on push")
-//                self.playerType = "second"
-//                //segue to guess scene
-//                self.showNextScene()
-//            }
-//            }
-//        }
-//}
-    
     func showNextScene(){
         gameIsReady = true
         performSegueWithIdentifier("showGuessViewController", sender: self)
@@ -285,7 +270,18 @@ class StartMenuViewController: UIViewController, PFLogInViewControllerDelegate, 
         var nextScene : GuessViewController = segue.destinationViewController as! GuessViewController
         nextScene.gameObjectID = self.gameObjectID
         nextScene.playerID = self.playerID
+        nextScene.playerType = self.playerType
         
+        //get city array from Parse
+        var game = PFQuery(className: "Game")
+//        game.getObjectInBackgroundWithId(self.gameObjectID!) {(game: PFObject?, error: NSError?) -> Void in
+//            self.randomCities = game?.objectForKey("citiesArray") as? Array
+//            nextScene.randomCities = self.randomCities!
+//        }
+        
+        var thisGame = game.getObjectWithId(self.gameObjectID!)
+        self.randomCities = thisGame!.objectForKey("citiesArray") as? Array
+        nextScene.randomCities = self.randomCities!
     }
     
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
@@ -328,5 +324,5 @@ class StartMenuViewController: UIViewController, PFLogInViewControllerDelegate, 
     
     
     
-}
+} //class closing brace
 
