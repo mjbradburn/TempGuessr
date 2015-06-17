@@ -4,4 +4,5 @@
 
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
-#import <MBProgressHUD.h>
+#import <MBProgressHUD/MBProgressHUD.h>
+#import <ChameleonFramework/Chameleon.h>

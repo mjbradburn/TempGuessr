@@ -33,7 +33,10 @@ class ScoreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "sky.jpg")!)
+        self.view.backgroundColor = UIColor.flatWhiteColorDark()
+        
         var city = randomCities[index]
         cityLabel.text = city
 

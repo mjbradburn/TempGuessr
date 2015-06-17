@@ -15,6 +15,8 @@ class GameOverViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = UIColor.flatWhiteColorDark()
 
         // Do any additional setup after loading the view.
     }

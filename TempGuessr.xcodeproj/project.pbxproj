@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3D5AF99DC3622FA6E98E89DC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3F0407383A042407A6E26B6 /* libPods.a */; };
+		38A85AB7BB2A705DD3C6B368 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0171200C33925672EC58F4D0 /* libPods.a */; };
 		B6670FCD1B21EFD50093850D /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6670FCB1B21EFD50093850D /* ParseFacebookUtilsV4.framework */; };
 		B6670FCE1B21EFD50093850D /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6670FCC1B21EFD50093850D /* ParseUI.framework */; };
 		B6670FD01B2275FD0093850D /* StartMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6670FCF1B2275FD0093850D /* StartMenuViewController.swift */; };
@@ -52,9 +52,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0171200C33925672EC58F4D0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A0E37B395718B65490B5715 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A278E95A921A87CBC9A6678D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		B3F0407383A042407A6E26B6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6670FCB1B21EFD50093850D /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
 		B6670FCC1B21EFD50093850D /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		B6670FCF1B2275FD0093850D /* StartMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartMenuViewController.swift; sourceTree = "<group>"; };
@@ -118,7 +118,7 @@
 				B69BCB861B216B7C0083C119 /* AudioToolbox.framework in Frameworks */,
 				B69BCB841B216B660083C119 /* Parse.framework in Frameworks */,
 				B69BCB831B216B660083C119 /* Bolts.framework in Frameworks */,
-				3D5AF99DC3622FA6E98E89DC /* libPods.a in Frameworks */,
+				38A85AB7BB2A705DD3C6B368 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,7 +144,7 @@
 		6CA16F08A2D643639EA7DEE1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B3F0407383A042407A6E26B6 /* libPods.a */,
+				0171200C33925672EC58F4D0 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

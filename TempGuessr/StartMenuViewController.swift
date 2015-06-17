@@ -55,9 +55,19 @@ class StartMenuViewController: UIViewController, PFLogInViewControllerDelegate, 
     var randomCities : [String]?
     var playerType : String?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        
+        
+        self.view.backgroundColor = UIColor.flatWhiteColorDark()
+        
+
+        
+//        var loginVC = PFLogInViewController()
+//        var loginLogo = UIImage(contentsOfFile: "Logo.png")
+//        var loginLogoImageView = UIImageView(image: loginLogo)
+//        loginVC.logInView!.logo = loginLogoImageView
+//
 //        if PFUser.currentUser() == nil {
 //            var loginVC = PFLogInViewController()
 //            loginVC.fields = PFLogInFields.UsernameAndPassword | PFLogInFields.LogInButton | PFLogInFields.Facebook | PFLogInFields.SignUpButton 
@@ -111,6 +121,15 @@ class StartMenuViewController: UIViewController, PFLogInViewControllerDelegate, 
             loginVC.fields = PFLogInFields.UsernameAndPassword | PFLogInFields.LogInButton | PFLogInFields.SignUpButton | PFLogInFields.PasswordForgotten | PFLogInFields.Facebook | PFLogInFields.Twitter
             loginVC.delegate = self
             
+//            var loginLogo = UIImage(contentsOfFile: "Logo.png")
+//            var loginLogoImageView = UIImageView(image: loginLogo)
+//            loginVC.logInView!.logo = loginLogoImageView
+            var loginLogoTitle = UILabel()
+            loginLogoTitle.text = "TempGuessr"
+            loginVC.logInView!.logo = loginLogoTitle
+            
+            
+            loginVC.view.backgroundColor = UIColor(patternImage: UIImage(named: "sky.jpg")!)
             
             loginVC.facebookPermissions = ["basic_info"]
             
@@ -303,15 +322,6 @@ class StartMenuViewController: UIViewController, PFLogInViewControllerDelegate, 
         
         self.presentViewController(loginVC, animated: true, completion: nil)
         PFUser.logOutInBackground()
-//        var loginVC = PFLogInViewController()
-//        loginVC.fields = PFLogInFields.UsernameAndPassword | PFLogInFields.LogInButton | PFLogInFields.SignUpButton
-//        loginVC.delegate = self
-//        
-//        var signupVC = PFSignUpViewController()
-//        signupVC.delegate = self
-//        loginVC.signUpController = signupVC
-//        
-//        self.presentViewController(loginVC, animated: true, completion: nil)
     }
     
     @IBAction func quitGame(sender: AnyObject) {
