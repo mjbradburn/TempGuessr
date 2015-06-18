@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>TempGuessrToday.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -18,6 +23,16 @@
 			<true/>
 		</dict>
 		<key>B69BCB701B216A030083C119</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B6EEEBEF1B31142C008016EB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B6EEEC141B3126F1008016EB</key>
 		<dict>
 			<key>primary</key>
 			<true/>

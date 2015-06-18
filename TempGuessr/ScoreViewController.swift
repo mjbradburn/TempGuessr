@@ -81,9 +81,6 @@ class ScoreViewController: UIViewController {
             self.secondPlayerScore = (game!.objectForKey("secondPlayerScore") as? Int)
         }
 
-
-        
-        
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -106,6 +103,14 @@ class ScoreViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var nextScene : GameOverViewController = segue.destinationViewController as! GameOverViewController
+        nextScene.gameObjectID = self.gameObjectID
+        nextScene.playerID = self.playerID
+        nextScene.firstPlayerScore = self.firstPlayerScore
+        nextScene.secondPlayerScore = self.secondPlayerScore
+        
+        println(firstPlayerScore)
+        
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
@@ -114,11 +119,11 @@ class ScoreViewController: UIViewController {
     
     @IBAction func advanceNextScene(sender: AnyObject) {
         index++
-        var game = PFQuery(className: "Game")
-        game.getObjectInBackgroundWithId(gameObjectID!) {(game: PFObject?, error: NSError?) -> Void in
-            game?.setValue(self.firstPlayerScore!, forKey: "firstPlayerScore")
-            game?.setObject(self.secondPlayerScore!, forKey: "secondPlayerScore")
-        }
+//        var game = PFQuery(className: "Game")
+//        game.getObjectInBackgroundWithId(gameObjectID!) {(game: PFObject?, error: NSError?) -> Void in
+//            game?.setValue(self.firstPlayerScore!, forKey: "firstPlayerScore")
+//            game?.setObject(self.secondPlayerScore!, forKey: "secondPlayerScore")
+//        }
         if index < randomCities.count {
             var city = randomCities[index]
             cityLabel.text = city

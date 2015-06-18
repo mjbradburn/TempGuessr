@@ -39,6 +39,23 @@
 		B6ADEF3F1B2DC99600172934 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6ADEF3C1B2DC99600172934 /* FBSDKLoginKit.framework */; };
 		B6ADEF401B2DC99600172934 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6ADEF3D1B2DC99600172934 /* FBSDKShareKit.framework */; };
 		B6E8F35A1B2FB6CB00DB2E83 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E8F3591B2FB6CB00DB2E83 /* Extensions.swift */; };
+		B6EEEC161B3126F1008016EB /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6EEEBF11B31142C008016EB /* NotificationCenter.framework */; };
+		B6EEEC1D1B3126F1008016EB /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6EEEC1C1B3126F1008016EB /* MainInterface.storyboard */; };
+		B6EEEC201B3126F1008016EB /* TempGuessrToday.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B6EEEC151B3126F1008016EB /* TempGuessrToday.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B6EEEC281B3128C1008016EB /* TodayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EEEC271B3128C1008016EB /* TodayTableViewController.swift */; };
+		B6EEEC2A1B312958008016EB /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6EEEC291B312958008016EB /* Parse.framework */; };
+		B6EEEC2B1B312964008016EB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69BCB851B216B7C0083C119 /* AudioToolbox.framework */; };
+		B6EEEC2C1B312973008016EB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69BCB871B216B840083C119 /* CFNetwork.framework */; };
+		B6EEEC2D1B312979008016EB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69BCB891B216B8C0083C119 /* CoreGraphics.framework */; };
+		B6EEEC2E1B31297F008016EB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69BCB8B1B216B950083C119 /* CoreLocation.framework */; };
+		B6EEEC2F1B312988008016EB /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B69BCB971B216BC70083C119 /* libz.dylib */; };
+		B6EEEC301B312990008016EB /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69BCB8D1B216B9F0083C119 /* MobileCoreServices.framework */; };
+		B6EEEC311B312998008016EB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69BCB8F1B216BA60083C119 /* QuartzCore.framework */; };
+		B6EEEC321B31299E008016EB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69BCB911B216BAD0083C119 /* Security.framework */; };
+		B6EEEC331B3129A5008016EB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69BCB931B216BB60083C119 /* StoreKit.framework */; };
+		B6EEEC341B3129B2008016EB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B69BCB951B216BBF0083C119 /* SystemConfiguration.framework */; };
+		B6EEEC361B312B2F008016EB /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6EEEC351B312B2F008016EB /* Bolts.framework */; };
+		B6EEEC371B312B85008016EB /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B69BCB991B216BD20083C119 /* libsqlite3.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +66,28 @@
 			remoteGlobalIDString = B69BCB5B1B216A030083C119;
 			remoteInfo = TempGuessr;
 		};
+		B6EEEC1E1B3126F1008016EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B69BCB541B216A030083C119 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B6EEEC141B3126F1008016EB;
+			remoteInfo = TempGuessrToday;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B6EEEC001B31142C008016EB /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B6EEEC201B3126F1008016EB /* TempGuessrToday.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0171200C33925672EC58F4D0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,6 +129,16 @@
 		B6ADEF3D1B2DC99600172934 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		B6ADEF411B2DC9EF00172934 /* TempGuessr-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TempGuessr-Bridging-Header.h"; sourceTree = "<group>"; };
 		B6E8F3591B2FB6CB00DB2E83 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		B6EEEBF11B31142C008016EB /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		B6EEEC151B3126F1008016EB /* TempGuessrToday.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TempGuessrToday.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6EEEC191B3126F1008016EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6EEEC1C1B3126F1008016EB /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		B6EEEC241B31275A008016EB /* TempGuessrToday-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TempGuessrToday-Bridging-Header.h"; sourceTree = "<group>"; };
+		B6EEEC271B3128C1008016EB /* TodayTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayTableViewController.swift; sourceTree = "<group>"; };
+		B6EEEC291B312958008016EB /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		B6EEEC351B312B2F008016EB /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		B6EEEC381B31369E008016EB /* TempGuessrToday.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TempGuessrToday.entitlements; sourceTree = "<group>"; };
+		B6EEEC391B3137BA008016EB /* TempGuessr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TempGuessr.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +177,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B6EEEC121B3126F1008016EB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6EEEC371B312B85008016EB /* libsqlite3.dylib in Frameworks */,
+				B6EEEC341B3129B2008016EB /* SystemConfiguration.framework in Frameworks */,
+				B6EEEC331B3129A5008016EB /* StoreKit.framework in Frameworks */,
+				B6EEEC321B31299E008016EB /* Security.framework in Frameworks */,
+				B6EEEC311B312998008016EB /* QuartzCore.framework in Frameworks */,
+				B6EEEC301B312990008016EB /* MobileCoreServices.framework in Frameworks */,
+				B6EEEC2F1B312988008016EB /* libz.dylib in Frameworks */,
+				B6EEEC2E1B31297F008016EB /* CoreLocation.framework in Frameworks */,
+				B6EEEC361B312B2F008016EB /* Bolts.framework in Frameworks */,
+				B6EEEC2D1B312979008016EB /* CoreGraphics.framework in Frameworks */,
+				B6EEEC2C1B312973008016EB /* CFNetwork.framework in Frameworks */,
+				B6EEEC2B1B312964008016EB /* AudioToolbox.framework in Frameworks */,
+				B6EEEC2A1B312958008016EB /* Parse.framework in Frameworks */,
+				B6EEEC161B3126F1008016EB /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -145,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				0171200C33925672EC58F4D0 /* libPods.a */,
+				B6EEEBF11B31142C008016EB /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -154,6 +224,7 @@
 			children = (
 				B69BCB5E1B216A030083C119 /* TempGuessr */,
 				B69BCB741B216A030083C119 /* TempGuessrTests */,
+				B6EEEC171B3126F1008016EB /* TempGuessrToday */,
 				B69BCB5D1B216A030083C119 /* Products */,
 				1D9173F6FF28790831427C52 /* Pods */,
 				6CA16F08A2D643639EA7DEE1 /* Frameworks */,
@@ -165,6 +236,7 @@
 			children = (
 				B69BCB5C1B216A030083C119 /* TempGuessr.app */,
 				B69BCB711B216A030083C119 /* TempGuessrTests.xctest */,
+				B6EEEC151B3126F1008016EB /* TempGuessrToday.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -172,6 +244,7 @@
 		B69BCB5E1B216A030083C119 /* TempGuessr */ = {
 			isa = PBXGroup;
 			children = (
+				B6EEEC391B3137BA008016EB /* TempGuessr.entitlements */,
 				B69BCB9F1B216BF00083C119 /* Frameworks */,
 				B69BCB611B216A030083C119 /* AppDelegate.swift */,
 				B6670FFF1B235CDD0093850D /* GuessViewController.swift */,
@@ -241,6 +314,28 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B6EEEC171B3126F1008016EB /* TempGuessrToday */ = {
+			isa = PBXGroup;
+			children = (
+				B6EEEC381B31369E008016EB /* TempGuessrToday.entitlements */,
+				B6EEEC351B312B2F008016EB /* Bolts.framework */,
+				B6EEEC291B312958008016EB /* Parse.framework */,
+				B6EEEC1C1B3126F1008016EB /* MainInterface.storyboard */,
+				B6EEEC271B3128C1008016EB /* TodayTableViewController.swift */,
+				B6EEEC181B3126F1008016EB /* Supporting Files */,
+				B6EEEC241B31275A008016EB /* TempGuessrToday-Bridging-Header.h */,
+			);
+			path = TempGuessrToday;
+			sourceTree = "<group>";
+		};
+		B6EEEC181B3126F1008016EB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B6EEEC191B3126F1008016EB /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -253,10 +348,12 @@
 				B69BCB591B216A030083C119 /* Frameworks */,
 				B69BCB5A1B216A030083C119 /* Resources */,
 				B24F540A0A5D43AEE016E825 /* Copy Pods Resources */,
+				B6EEEC001B31142C008016EB /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B6EEEC1F1B3126F1008016EB /* PBXTargetDependency */,
 			);
 			name = TempGuessr;
 			productName = TempGuessr;
@@ -281,6 +378,23 @@
 			productReference = B69BCB711B216A030083C119 /* TempGuessrTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		B6EEEC141B3126F1008016EB /* TempGuessrToday */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B6EEEC211B3126F1008016EB /* Build configuration list for PBXNativeTarget "TempGuessrToday" */;
+			buildPhases = (
+				B6EEEC111B3126F1008016EB /* Sources */,
+				B6EEEC121B3126F1008016EB /* Frameworks */,
+				B6EEEC131B3126F1008016EB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TempGuessrToday;
+			productName = TempGuessrToday;
+			productReference = B6EEEC151B3126F1008016EB /* TempGuessrToday.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -292,10 +406,25 @@
 				TargetAttributes = {
 					B69BCB5B1B216A030083C119 = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = P4S9V7377S;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					B69BCB701B216A030083C119 = {
 						CreatedOnToolsVersion = 6.3.2;
 						TestTargetID = B69BCB5B1B216A030083C119;
+					};
+					B6EEEC141B3126F1008016EB = {
+						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = P4S9V7377S;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -314,6 +443,7 @@
 			targets = (
 				B69BCB5B1B216A030083C119 /* TempGuessr */,
 				B69BCB701B216A030083C119 /* TempGuessrTests */,
+				B6EEEC141B3126F1008016EB /* TempGuessrToday */,
 			);
 		};
 /* End PBXProject section */
@@ -333,6 +463,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6EEEC131B3126F1008016EB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6EEEC1D1B3126F1008016EB /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,6 +532,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B6EEEC111B3126F1008016EB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6EEEC281B3128C1008016EB /* TodayTableViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -401,6 +547,11 @@
 			isa = PBXTargetDependency;
 			target = B69BCB5B1B216A030083C119 /* TempGuessr */;
 			targetProxy = B69BCB721B216A030083C119 /* PBXContainerItemProxy */;
+		};
+		B6EEEC1F1B3126F1008016EB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B6EEEC141B3126F1008016EB /* TempGuessrToday */;
+			targetProxy = B6EEEC1E1B3126F1008016EB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -515,6 +666,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = TempGuessr/TempGuessr.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/TempGuessr",
@@ -523,7 +677,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ba35d8bf-c9b1-40c7-a066-c831d83f946a";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "TempGuessr/TempGuessr-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -535,7 +689,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mark Bradburn (L72UEFQKM8)";
+				CODE_SIGN_ENTITLEMENTS = TempGuessr/TempGuessr.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/TempGuessr",
@@ -544,7 +700,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ba35d8bf-c9b1-40c7-a066-c831d83f946a";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "TempGuessr/TempGuessr-Bridging-Header.h";
 			};
 			name = Release;
@@ -586,6 +742,51 @@
 			};
 			name = Release;
 		};
+		B6EEEC221B3126F1008016EB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = TempGuessrToday/TempGuessrToday.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TempGuessrToday",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TempGuessrToday/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "TempGuessrToday/TempGuessrToday-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B6EEEC231B3126F1008016EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = TempGuessrToday/TempGuessrToday.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TempGuessrToday",
+				);
+				INFOPLIST_FILE = TempGuessrToday/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "TempGuessrToday/TempGuessrToday-Bridging-Header.h";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -615,6 +816,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		B6EEEC211B3126F1008016EB /* Build configuration list for PBXNativeTarget "TempGuessrToday" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B6EEEC221B3126F1008016EB /* Debug */,
+				B6EEEC231B3126F1008016EB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

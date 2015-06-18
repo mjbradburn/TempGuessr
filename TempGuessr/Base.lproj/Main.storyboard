@@ -315,10 +315,10 @@
             </objects>
             <point key="canvasLocation" x="2488" y="-553"/>
         </scene>
-        <!--View Controller-->
+        <!--Game Over View Controller-->
         <scene sceneID="gqT-8j-GPV">
             <objects>
-                <viewController id="cKu-1J-cIa" sceneMemberID="viewController">
+                <viewController id="cKu-1J-cIa" customClass="GameOverViewController" customModule="TempGuessr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sxc-5t-3VR"/>
                         <viewControllerLayoutGuide type="bottom" id="FjM-hi-jki"/>
@@ -346,15 +346,28 @@
                                     <segue destination="wwA-n4-tc2" kind="show" id="pD4-4P-RiB"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="48k-pF-dNT">
+                                <rect key="frame" x="16" y="28" width="568" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="48k-pF-dNT" firstAttribute="trailing" secondItem="67w-Z9-4cn" secondAttribute="trailingMargin" id="2oh-3A-xiI"/>
+                            <constraint firstItem="48k-pF-dNT" firstAttribute="top" secondItem="sxc-5t-3VR" secondAttribute="bottom" constant="8" id="8nV-3a-LS6"/>
+                            <constraint firstAttribute="centerX" secondItem="48k-pF-dNT" secondAttribute="centerX" id="QfA-mQ-kgq"/>
                             <constraint firstItem="coX-dB-bsU" firstAttribute="top" secondItem="ior-yW-X7o" secondAttribute="bottom" constant="8" symbolic="YES" id="TCL-Cc-lTR"/>
                             <constraint firstItem="ior-yW-X7o" firstAttribute="centerX" secondItem="coX-dB-bsU" secondAttribute="centerX" id="aar-b4-Xuz"/>
                             <constraint firstItem="FjM-hi-jki" firstAttribute="top" secondItem="coX-dB-bsU" secondAttribute="bottom" constant="252" id="bwG-vY-AZd"/>
+                            <constraint firstItem="48k-pF-dNT" firstAttribute="leading" secondItem="67w-Z9-4cn" secondAttribute="leadingMargin" id="qQ8-cf-L2g"/>
                             <constraint firstItem="ior-yW-X7o" firstAttribute="centerX" secondItem="67w-Z9-4cn" secondAttribute="centerX" id="tQM-5g-zW8"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="winnerMessage" destination="48k-pF-dNT" id="rih-ck-j7h"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iCz-Lt-R19" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
