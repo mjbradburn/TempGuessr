@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		38A85AB7BB2A705DD3C6B368 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0171200C33925672EC58F4D0 /* libPods.a */; };
+		B663C88C1B32707B00CF0972 /* halfsec.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B663C88B1B32707B00CF0972 /* halfsec.mp3 */; };
 		B6670FCD1B21EFD50093850D /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6670FCB1B21EFD50093850D /* ParseFacebookUtilsV4.framework */; };
 		B6670FCE1B21EFD50093850D /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6670FCC1B21EFD50093850D /* ParseUI.framework */; };
 		B6670FD01B2275FD0093850D /* StartMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6670FCF1B2275FD0093850D /* StartMenuViewController.swift */; };
@@ -93,6 +94,7 @@
 		0171200C33925672EC58F4D0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A0E37B395718B65490B5715 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A278E95A921A87CBC9A6678D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		B663C88B1B32707B00CF0972 /* halfsec.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = halfsec.mp3; sourceTree = "<group>"; };
 		B6670FCB1B21EFD50093850D /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
 		B6670FCC1B21EFD50093850D /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		B6670FCF1B2275FD0093850D /* StartMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartMenuViewController.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 		B69BCB5F1B216A030083C119 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B663C88B1B32707B00CF0972 /* halfsec.mp3 */,
 				B69BCB601B216A030083C119 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -456,6 +459,7 @@
 				B69BCB671B216A030083C119 /* Main.storyboard in Resources */,
 				B69BCB6C1B216A030083C119 /* LaunchScreen.xib in Resources */,
 				B69BCB691B216A030083C119 /* Images.xcassets in Resources */,
+				B663C88C1B32707B00CF0972 /* halfsec.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -824,6 +828,7 @@
 				B6EEEC231B3126F1008016EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

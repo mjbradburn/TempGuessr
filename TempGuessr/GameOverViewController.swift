@@ -24,12 +24,20 @@ class GameOverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
+        
         self.view.backgroundColor = UIColor.flatWhiteColorDark()
         
         var game = PFQuery(className: "Game")
         game.getObjectInBackgroundWithId(gameObjectID!) {(game: PFObject?, error: NSError?) -> Void in
-            game?.setValue(self.firstPlayerScore!, forKey: "firstPlayerScore")
-            game?.setObject(self.secondPlayerScore!, forKey: "secondPlayerScore")
+            
+            println(self.firstPlayerScore)
+            println(self.secondPlayerScore)
+            
+            game!.setValue(self.firstPlayerScore!, forKey: "firstPlayerScore")
+            game!.setValue(self.secondPlayerScore!, forKey: "secondPlayerScore")
+            game!.saveInBackground()
             
             self.firstPlayerID = (game!.objectForKey("firstPlayer") as? String)
             self.secondPlayerID = (game!.objectForKey("secondPlayer") as? String)

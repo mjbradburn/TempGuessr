@@ -84,7 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        PFPush.handlePush(userInfo)
+        //PFPush.handlePush(userInfo)
         var notification : NSDictionary
         var user = userInfo as NSDictionary
         notification = user.objectForKey("aps") as! NSDictionary
@@ -92,8 +92,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if (notification.objectForKey("content-available") != nil) {
             if (notification.objectForKey("content-available")!.isEqualToNumber(1)){
                 NSNotificationCenter.defaultCenter().postNotificationName("startGame", object: nil)
-                //PFPush.handlePush(userInfo)
+                PFPush.handlePush(userInfo)
+            } else if (notification.objectForKey("content-available")!.isEqualToNumber(2)){
+                NSNotificationCenter.defaultCenter().postNotificationName("startGame", object: nil)
             }
+        } else {
+            PFPush.handlePush(userInfo)
         }
 
 

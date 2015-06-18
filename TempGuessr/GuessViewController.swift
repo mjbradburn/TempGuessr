@@ -107,18 +107,6 @@ class GuessViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
         nextScene.gameObjectID = self.gameObjectID
         nextScene.playerID = self.playerID
         nextScene.randomCities = self.randomCities!
-        
-        //Send guesses to Parse and Get 
-//        var game = PFQuery(className: "Game")
-//        game.getObjectInBackgroundWithId(self.gameObjectID!) {(game: PFObject?, error: NSError?) -> Void in
-//            if self.playerID! == game?.objectForKey("firstPlayer") as! String {
-//                game!.setValue(self.guessesArray, forKey: "firstPlayerGuessesArray")
-//            } else {
-//                game!.setValue(self.guessesArray, forKey: "secondPlayerGuessesArray")
-//            }
-//            game!.saveInBackground()
-//            println("scores added \(error)")
-//        }
     }
     
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
@@ -151,7 +139,6 @@ class GuessViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
                     game!.setValue(self.guessesArray, forKey: "secondPlayerGuessesArray")
                 }
                 game!.saveInBackground()
-                println("scores added \(error)")
             }
             
             selectedTemp = tempPicker.selectedRowInComponent(0)
@@ -166,19 +153,18 @@ class GuessViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
                     game!.setValue(self.guessesArray, forKey: "secondPlayerGuessesArray")
                 }
                 game!.saveInBackground()
-                println("scores added \(error)")
             }
             
             //send notification to other player that you are ready
             if playerType == "first" {
                 var push : PFPush = PFPush()
-                var data : NSDictionary = ["alert":"Shhhh", "badge":"0", "content-available":"1", "sound":""]
+                var data : NSDictionary = ["content-available":"2", "sound":"halfsec.mp3"]
                 push.setChannel("secondPlayer\(self.gameObjectID!)")
                 push.setData(data as [NSObject : AnyObject])
                 push.sendPushInBackground()
             } else if playerType == "second" {
                 var push : PFPush = PFPush()
-                var data : NSDictionary = ["alert":"Shhhh", "badge":"0", "content-available":"1", "sound":""]
+                var data : NSDictionary = ["content-available":"2", "sound":"halfsec.mp3"]
                 push.setChannel("firstPlayer\(self.gameObjectID!)")
                 push.setData(data as [NSObject : AnyObject])
                 push.sendPushInBackground()
@@ -200,19 +186,18 @@ class GuessViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
                     game!.setValue(self.guessesArray, forKey: "secondPlayerGuessesArray")
                 }
                 game!.saveInBackground()
-                println("scores added \(error)")
             }
             
             //send notification to other player that you are ready
             if playerType == "first" {
                 var push : PFPush = PFPush()
-                var data : NSDictionary = ["alert":"Shhhh", "badge":"0", "content-available":"1", "sound":""]
+                var data : NSDictionary = ["content-available":"2", "sound":"halfsec.mp3"]
                 push.setChannel("secondPlayer\(self.gameObjectID!)")
                 push.setData(data as [NSObject : AnyObject])
                 push.sendPushInBackground()
             } else if playerType == "second" {
                 var push : PFPush = PFPush()
-                var data : NSDictionary = ["alert":"Shhhh", "badge":"0", "content-available":"1", "sound":""]
+                var data : NSDictionary = ["content-available":"2", "sound":"halfsec.mp3"]
                 push.setChannel("firstPlayer\(self.gameObjectID!)")
                 push.setData(data as [NSObject : AnyObject])
                 push.sendPushInBackground()

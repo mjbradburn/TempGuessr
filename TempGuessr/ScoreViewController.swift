@@ -108,22 +108,12 @@ class ScoreViewController: UIViewController {
         nextScene.playerID = self.playerID
         nextScene.firstPlayerScore = self.firstPlayerScore
         nextScene.secondPlayerScore = self.secondPlayerScore
-        
-        println(firstPlayerScore)
-        
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
     
     // MARK: - IBActions
     
     @IBAction func advanceNextScene(sender: AnyObject) {
         index++
-//        var game = PFQuery(className: "Game")
-//        game.getObjectInBackgroundWithId(gameObjectID!) {(game: PFObject?, error: NSError?) -> Void in
-//            game?.setValue(self.firstPlayerScore!, forKey: "firstPlayerScore")
-//            game?.setObject(self.secondPlayerScore!, forKey: "secondPlayerScore")
-//        }
         if index < randomCities.count {
             var city = randomCities[index]
             cityLabel.text = city
