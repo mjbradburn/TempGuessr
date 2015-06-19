@@ -70,27 +70,39 @@ class TodayTableViewController: UITableViewController, NCWidgetProviding {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
         cell.textLabel?.textColor = UIColor.whiteColor()
-        let findUsers : PFQuery = PFQuery(className: "_User")
         
-        findUsers.findObjectsInBackgroundWithBlock({(objects: [AnyObject]?, error: NSError?) -> Void in
-            if (error == nil) {
-                var userArray = [AnyObject]()
-                
-                for object in objects! {
-                    let user : PFObject = object as! PFObject
-                    userArray.append(user)
-                }
-                
-                let user : PFObject = userArray[indexPath.row] as! PFObject
-                let userName : String = user.objectForKey("username") as! String
-                cell.textLabel!.text = "\(userName) just joined"
-            }
+        let defaults : NSUserDefaults = NSUserDefaults(suiteName: "group.bradburn.bradburn.com.TempGuessr")!
 
-        })
+            cell.textLabel!.text = defaults.objectForKey("today")  as? String
+   
+        
+        
+//        let findUsers : PFQuery = PFQuery(className: "_User")
+//        
+//        findUsers.findObjectsInBackgroundWithBlock({(objects: [AnyObject]?, error: NSError?) -> Void in
+//            if (error == nil) {
+//                var userArray = [AnyObject]()
+//                
+//                for object in objects! {
+//                    let user : PFObject = object as! PFObject
+//                    userArray.append(user)
+//                }
+//                
+//                let user : PFObject = userArray[indexPath.row] as! PFObject
+//                let userName : String = user.objectForKey("username") as! String
+//                cell.textLabel!.text = "\(userName) just joined"
+//            }
+//
+//        })
         
         
         
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let url = NSURL(fileURLWithPath: "newusers://")
+        self.extensionContext?.openURL(url!, completionHandler: nil)
     }
    
 

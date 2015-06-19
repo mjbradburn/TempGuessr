@@ -21,9 +21,12 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleURLName</key>
+			<string>bradburn.bradburn.com.TempGuessr</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb976903295683407</string>
+				<string>newusers</string>
 			</array>
 		</dict>
 	</array>

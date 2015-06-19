@@ -30,7 +30,6 @@ class GuessViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "sky.jpg")!)
         self.view.backgroundColor = UIColor.flatWhiteColorDark()
 
         var city = randomCities?[index]
@@ -89,7 +88,6 @@ class GuessViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
     }
     
     func updateOtherPlayerFinishedStatus(){
-        println("other player finished")
         otherPlayerFinishedStatus = true
         
         //if user was already waiting force next scene
@@ -202,13 +200,11 @@ class GuessViewController: UIViewController, UIPickerViewDataSource, UIPickerVie
                 push.setData(data as [NSObject : AnyObject])
                 push.sendPushInBackground()
             }
-            
-            
+
             performSegueWithIdentifier("showScoreViewController", sender: self)
-            //MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
             
         }
     }
 
 
-}// last brace
+}

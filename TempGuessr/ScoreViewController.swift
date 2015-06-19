@@ -34,7 +34,6 @@ class ScoreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "sky.jpg")!)
         self.view.backgroundColor = UIColor.flatWhiteColorDark()
         
         var city = randomCities[index]
@@ -46,7 +45,6 @@ class ScoreViewController: UIViewController {
             let cleanUrl = dirtyUrl.stringByReplacingOccurrencesOfString(" ", withString: "%20", options: NSStringCompareOptions.LiteralSearch, range: nil)
             
             let url = NSURL(string: cleanUrl)
-            println(url)
             let session = NSURLSession.sharedSession()
             var parseError : NSError?
             let task = session.downloadTaskWithURL(url!) {
@@ -57,7 +55,6 @@ class ScoreViewController: UIViewController {
                 if let topLevelObject = parsedObject as? NSDictionary {
                     if let currentObservation = topLevelObject.objectForKey("current_observation") as? NSDictionary {
                         self.currentTemp = currentObservation.objectForKey("temp_f") as? Int
-                        println(self.currentTemp)
                     }
                     dispatch_async(dispatch_get_main_queue()) {
                         self.currentTempArray.append(self.currentTemp!)
@@ -84,12 +81,12 @@ class ScoreViewController: UIViewController {
     }
 
     override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         self.currentTempLabel.text = toString(self.currentTempArray[index])
         firstPlayerScore = abs(currentTempArray[index] - firstPlayerGuessesArray[index]) + firstPlayerScore!
         firstPlayerScoreLabel.text = toString(firstPlayerScore!)
         secondPlayerScore = abs(currentTempArray[index] - secondPlayerGuessesArray[index]) + secondPlayerScore!
         secondPlayerScoreLabel.text = toString(secondPlayerScore!)
-        
     }
     
     override func didReceiveMemoryWarning() {

@@ -18,22 +18,18 @@ class GameOverViewController: UIViewController {
     var firstPlayerID : String?
     var secondPlayerID : String?
     var message = ""
+    var firstPlayerWins = false
+    var secondPlayerWins = false
     
     @IBOutlet weak var winnerMessage: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-        
+  
         self.view.backgroundColor = UIColor.flatWhiteColorDark()
         
         var game = PFQuery(className: "Game")
         game.getObjectInBackgroundWithId(gameObjectID!) {(game: PFObject?, error: NSError?) -> Void in
-            
-            println(self.firstPlayerScore)
-            println(self.secondPlayerScore)
             
             game!.setValue(self.firstPlayerScore!, forKey: "firstPlayerScore")
             game!.setValue(self.secondPlayerScore!, forKey: "secondPlayerScore")
@@ -45,14 +41,35 @@ class GameOverViewController: UIViewController {
             if self.firstPlayerScore < self.secondPlayerScore {
                 self.message = "\(self.firstPlayerID!) wins!"
                 self.winnerMessage.text = self.message
+                self.firstPlayerWins = true
             } else if self.secondPlayerScore < self.firstPlayerScore {
                 self.message = "\(self.secondPlayerID!) wins!"
                 self.winnerMessage.text = self.message
+                self.secondPlayerWins = true
             } else {
                 self.winnerMessage.text = "It's a dead heat!"
             }
+            
+            //send data to Today Extension
+            var defaults = NSUserDefaults(suiteName: "group.bradburn.bradburn.com.TempGuessr")
+            var todayMessage : String = ""
+            
+            
+            if self.playerID == self.firstPlayerID  {
+                if self.firstPlayerWins {
+                    todayMessage = "You defeated \(self.secondPlayerID!)"
+                } else if self.secondPlayerWins {
+                    todayMessage = "You lost to \(self.secondPlayerID!)"
+                }
+            } else if self.playerID  == self.secondPlayerID {
+                if self.firstPlayerWins {
+                    todayMessage = "You lost to \(self.firstPlayerID!)"
+                } else if self.secondPlayerWins {
+                    todayMessage = "You defeated \(self.firstPlayerID!)"
+                }
+            }
+            defaults?.setValue(todayMessage, forKey: "today")
         }
-
     }
 
     override func didReceiveMemoryWarning() {

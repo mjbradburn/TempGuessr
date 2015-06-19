@@ -13,7 +13,6 @@
 		B6670FCE1B21EFD50093850D /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6670FCC1B21EFD50093850D /* ParseUI.framework */; };
 		B6670FD01B2275FD0093850D /* StartMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6670FCF1B2275FD0093850D /* StartMenuViewController.swift */; };
 		B66710001B235CDD0093850D /* GuessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6670FFF1B235CDD0093850D /* GuessViewController.swift */; };
-		B66710021B236CE90093850D /* CityArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66710011B236CE90093850D /* CityArray.swift */; };
 		B66710041B23759F0093850D /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66710031B23759F0093850D /* ScoreViewController.swift */; };
 		B66710061B2384A40093850D /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66710051B2384A40093850D /* GameOverViewController.swift */; };
 		B69BCB621B216A030083C119 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69BCB611B216A030083C119 /* AppDelegate.swift */; };
@@ -99,7 +98,6 @@
 		B6670FCC1B21EFD50093850D /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		B6670FCF1B2275FD0093850D /* StartMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartMenuViewController.swift; sourceTree = "<group>"; };
 		B6670FFF1B235CDD0093850D /* GuessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuessViewController.swift; sourceTree = "<group>"; };
-		B66710011B236CE90093850D /* CityArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityArray.swift; sourceTree = "<group>"; };
 		B66710031B23759F0093850D /* ScoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
 		B66710051B2384A40093850D /* GameOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		B69BCB5C1B216A030083C119 /* TempGuessr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TempGuessr.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -252,7 +250,6 @@
 				B6670FFF1B235CDD0093850D /* GuessViewController.swift */,
 				B66710051B2384A40093850D /* GameOverViewController.swift */,
 				B66710031B23759F0093850D /* ScoreViewController.swift */,
-				B66710011B236CE90093850D /* CityArray.swift */,
 				B6E8F3591B2FB6CB00DB2E83 /* Extensions.swift */,
 				B69BCB651B216A030083C119 /* Main.storyboard */,
 				B6670FCF1B2275FD0093850D /* StartMenuViewController.swift */,
@@ -518,7 +515,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B66710021B236CE90093850D /* CityArray.swift in Sources */,
 				B66710001B235CDD0093850D /* GuessViewController.swift in Sources */,
 				B66710061B2384A40093850D /* GameOverViewController.swift in Sources */,
 				B66710041B23759F0093850D /* ScoreViewController.swift in Sources */,

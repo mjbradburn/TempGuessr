@@ -60,55 +60,11 @@ class StartMenuViewController: UIViewController, PFLogInViewControllerDelegate, 
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.flatWhiteColorDark()
-        
 
-        
-//        var loginVC = PFLogInViewController()
-//        var loginLogo = UIImage(contentsOfFile: "Logo.png")
-//        var loginLogoImageView = UIImageView(image: loginLogo)
-//        loginVC.logInView!.logo = loginLogoImageView
-//
-//        if PFUser.currentUser() == nil {
-//            var loginVC = PFLogInViewController()
-//            loginVC.fields = PFLogInFields.UsernameAndPassword | PFLogInFields.LogInButton | PFLogInFields.Facebook | PFLogInFields.SignUpButton 
-//            loginVC.facebookPermissions = ["friends_about_me"]
-//            loginVC.delegate = self
-//            
-//            var signupVC = PFSignUpViewController()
-//            signupVC.delegate = self
-//            loginVC.signUpController = signupVC
-//            
-//            self.presentViewController(loginVC, animated: true, completion: nil)
-//        } else {
-//            self.playerID = PFUser.currentUser()?.username
-//            self.playerIDLabel.text = playerID!
-//        }
-//
-//        
-//        //check for updates to parse game object
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showNextScene", name: "startGame", object: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
-//        if PFUser.currentUser() == nil {
-//            var loginVC = PFLogInViewController()
-//            loginVC.fields = PFLogInFields.UsernameAndPassword | PFLogInFields.LogInButton | PFLogInFields.SignUpButton | PFLogInFields.Facebook
-//            loginVC.facebookPermissions = ["friends_about_me"]
-//            loginVC.delegate = self
-//            
-//            var signupVC = PFSignUpViewController()
-//            signupVC.delegate = self
-//            loginVC.signUpController = signupVC
-//            
-//            self.presentViewController(loginVC, animated: true, completion: nil)
-//        } else {
-//            self.playerID = PFUser.currentUser()?.username
-//            self.playerIDLabel.text = playerID!
-//        }
-//        
-//        
-//        //check for updates to parse game object
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "showNextScene", name: "startGame", object: nil)
+
     }
     
 
@@ -121,9 +77,6 @@ class StartMenuViewController: UIViewController, PFLogInViewControllerDelegate, 
             loginVC.fields = PFLogInFields.UsernameAndPassword | PFLogInFields.LogInButton | PFLogInFields.SignUpButton | PFLogInFields.PasswordForgotten | PFLogInFields.Facebook | PFLogInFields.Twitter
             loginVC.delegate = self
             
-//            var loginLogo = UIImage(contentsOfFile: "Logo.png")
-//            var loginLogoImageView = UIImageView(image: loginLogo)
-//            loginVC.logInView!.logo = loginLogoImageView
             var loginLogoTitle = UILabel()
             loginLogoTitle.text = "TempGuessr"
             loginVC.logInView!.logo = loginLogoTitle
@@ -207,7 +160,6 @@ class StartMenuViewController: UIViewController, PFLogInViewControllerDelegate, 
         self.playerID = PFUser.currentUser()?.username
         self.playerIDLabel.text = self.playerID!
         
-        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -243,11 +195,9 @@ class StartMenuViewController: UIViewController, PFLogInViewControllerDelegate, 
                         self.gameObjectID =  newGame.objectId
                         request["gameObjectID"] = newGame.objectId
                         request.saveInBackground()
-                        println("game added \(self.gameObjectID)")
                         
                         //set channel to be notified when game is fulfilled
                         var channel : String = "\(self.playerID!)\(self.gameObjectID!)"
-                        println("channel is: \(channel)")
                         PFPush.subscribeToChannelInBackground(channel)
                         var alert = UIAlertView(title: "TempGuessr", message: "Finding a match...we'll notify you", delegate: self, cancelButtonTitle: "OK")
                         alert.show()
@@ -255,6 +205,7 @@ class StartMenuViewController: UIViewController, PFLogInViewControllerDelegate, 
                         self.playerType = "first"
                     }
                 }
+
             } else {
                 //make a match
                 self.gameObjectID = object?.objectForKey("gameObjectID") as? String
@@ -272,7 +223,6 @@ class StartMenuViewController: UIViewController, PFLogInViewControllerDelegate, 
                     //push.setMessage("Your game is on!")
                     push.setData(data as [NSObject : AnyObject])
                     push.sendPushInBackground()
-                    println("send game is on push")
                     self.playerType = "second"
                     //segue to guess scene
                     self.showNextScene()
@@ -294,10 +244,6 @@ class StartMenuViewController: UIViewController, PFLogInViewControllerDelegate, 
         
         //get city array from Parse
         var game = PFQuery(className: "Game")
-//        game.getObjectInBackgroundWithId(self.gameObjectID!) {(game: PFObject?, error: NSError?) -> Void in
-//            self.randomCities = game?.objectForKey("citiesArray") as? Array
-//            nextScene.randomCities = self.randomCities!
-//        }
         
         var thisGame = game.getObjectWithId(self.gameObjectID!)
         self.randomCities = thisGame!.objectForKey("citiesArray") as? Array
@@ -313,7 +259,7 @@ class StartMenuViewController: UIViewController, PFLogInViewControllerDelegate, 
     @IBAction func logOut(sender: AnyObject) {
         var loginVC = PFLogInViewController()
         loginVC.fields = PFLogInFields.UsernameAndPassword | PFLogInFields.LogInButton | PFLogInFields.SignUpButton | PFLogInFields.PasswordForgotten | PFLogInFields.Facebook | PFLogInFields.Twitter
-        //loginVC.facebookPermissions = ["basic_info"]
+        
         loginVC.delegate = self
         
         var signupVC = PFSignUpViewController()
@@ -327,13 +273,6 @@ class StartMenuViewController: UIViewController, PFLogInViewControllerDelegate, 
     @IBAction func quitGame(sender: AnyObject) {
         
     }
-    
-    
-    
-    
-    
-    
-    
-    
-} //class closing brace
+
+} 
 
